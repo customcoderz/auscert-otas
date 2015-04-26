@@ -13,7 +13,8 @@ define('FOOTER_PATH', 'views/includes/footer.htm');
  * -> otherwise go to login page
  */
 $f3->route('GET /', function($f3) {
-	
+	// !!TODO!!
+
 	// header & footer files
 	$f3->set('header', HEADER_PATH);
 	$f3->set('footer', FOOTER_PATH);
