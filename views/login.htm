@@ -5,7 +5,12 @@
       <a href="index2.html"><img src="views/dist/img/logo2.png" alt="logo"></a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Sign in to start your training</p>
+      <p class="login-box-msg">
+        <check if="{{@@SESSION.flash}}">
+          <true><span style="color: red">{{@@SESSION.flash}}</span></true>
+          <false><span>Sign in to start your training</span></false>
+        </check>
+      </p>
       <form action="/login" method="post">
         <div class="form-group has-feedback">
           <input type="text" name="user-email" class="form-control" placeholder="Email"/>

@@ -27,6 +27,11 @@ $f3->route('GET /', function($f3) {
   } else {
     // TODO: display main page
 
+    $f3->set('bodyclass', 'skin-purple');
+    $f3->set('header', HEADER_PATH);
+    $f3->set('footer', FOOTER_PATH);
+
+    echo Template::instance()->render('views/index.htm');
   }
 });
 
@@ -36,7 +41,7 @@ $f3->route('GET /', function($f3) {
  */
 $f3->route('GET /login', function($f3) {
   // clear the session first
-  $f3->clear('SESSION');
+  $f3->clear('SESSION.email');
 
   // header & footer files
   $f3->set('header', HEADER_PATH);
@@ -47,6 +52,9 @@ $f3->route('GET /login', function($f3) {
 
   // render the template
   echo Template::instance()->render('views/login.htm');
+
+  // clear the flash message after use
+  $f3->clear('SESSION.flash');
 });
 
 /*
@@ -63,19 +71,23 @@ $f3->route('POST /login', function($f3) {
   // authenticate
   if ($auth->login($f3->get('POST.user-email'), $f3->get('POST.user-password'))) {
     // if successful
-    // TODO
+    
+    // set session
+    $f3->set('SESSION.email', $f3->get('POST.user-email'));
+
+    // display main page
+    $f3->reroute('/');
   } else {
     // if fail
-    // TODO
+
+    // make a flash message
+    $f3->set('SESSION.flash', 'Invalid email or password.');
+
+    // display login form again
+    $f3->reroute('/login');
   }
 });
 
-// $f3->route('GET /db', function($f3) {
-//   $db = $f3->get('DB');
-//   $mapper = new DB\SQL\Mapper($db, 'user');
-//   $auth = new Auth($mapper, array('id' => 'email', 'pw' => 'password'));
-//   var_dump($auth->login('john@example.com', 'jmayer1234'));
-// });
-
 // run the application
+$f3->set('DEBUG', 3);
 $f3->run();
