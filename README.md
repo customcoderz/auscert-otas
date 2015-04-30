@@ -11,7 +11,7 @@ Framework being used: [Fat Free Framework](http://fatfreeframework.com/user-guid
 3. Open terminal / command prompt,
 4. Change directory to project directory
 5. Start PHP built-in server:
-```php
+```
 php -S localhost:3000
 ```
 6. Open web browser and go to [localhost:3000](http://localhost:3000)
