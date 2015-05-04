@@ -13,6 +13,15 @@ $f3->set('DB', new DB\SQL('mysql:host=127.0.0.1;dbname=auscertdb', 'root', ''));
 // tell the framework we'll use sessions
 new DB\SQL\Session($f3->get('DB'));
 
+// user model
+$f3->set('user', new DB\SQL\Mapper($f3->get('DB'), 'user'));
+
+// a function that can be used to check
+// authentication status of the user
+$f3->set('isAuthenticated', function() {
+  return F3::exists('SESSION.email');
+});
+
 /*
  * GET /
  * -> if authenticated go to main page
@@ -25,7 +34,9 @@ $f3->route('GET /', function($f3) {
   if (!$f3->exists('SESSION.email')) {
     $f3->reroute('/login');
   } else {
-    // TODO: display main page
+    $user = $f3->get('user');
+    $user = $user->find("email = '" . $f3->get('SESSION.email') . "'");
+    $f3->set('username', "{$user[0]->first_name} {$user[0]->last_name}");
 
     $f3->set('bodyclass', 'skin-purple');
     $f3->set('header', HEADER_PATH);
@@ -40,8 +51,11 @@ $f3->route('GET /', function($f3) {
  * -> display login form
  */
 $f3->route('GET /login', function($f3) {
-  // clear the session first
-  $f3->clear('SESSION.email');
+  // If already logged in, go to main page
+  if ($f3->exists('SESSION.email')) {
+    $f3->reroute('/');
+    return;
+  }
 
   // header & footer files
   $f3->set('header', HEADER_PATH);
@@ -63,10 +77,10 @@ $f3->route('GET /login', function($f3) {
  */
 $f3->route('POST /login', function($f3) {
   // instantiate sql mapper
-  $mapper = new DB\SQL\Mapper($f3->get('DB'), 'user');
+  $user = $f3->get('user');
 
   // instantiate authenticator
-  $auth = new Auth($mapper, array('id' => 'email', 'pw' => 'password'));
+  $auth = new Auth($user, array('id' => 'email', 'pw' => 'password'));
 
   // authenticate
   if ($auth->login($f3->get('POST.user-email'), $f3->get('POST.user-password'))) {
@@ -74,6 +88,7 @@ $f3->route('POST /login', function($f3) {
     
     // set session
     $f3->set('SESSION.email', $f3->get('POST.user-email'));
+    $f3->set('authenticated', TRUE);
 
     // display main page
     $f3->reroute('/');
@@ -86,6 +101,21 @@ $f3->route('POST /login', function($f3) {
     // display login form again
     $f3->reroute('/login');
   }
+});
+
+/*
+ * GET /logout
+ * -> logout the user, redirect to login page
+ */
+$f3->route('GET /logout', function($f3) {
+  // clear the login data
+  $f3->clear('SESSION.email');
+
+  // make a flash message
+  $f3->set('SESSION.flash', 'You\'ve been logged out');
+
+  // redirect
+  $f3->reroute('/');
 });
 
 // run the application

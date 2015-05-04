@@ -115,14 +115,14 @@
               <!-- The user image in the navbar-->
               <img src="views/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $username; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="views/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                 <p>
-                  Alexander Pierce - Web Developer
+                  <?php echo $username; ?> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -144,7 +144,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -165,7 +165,7 @@
           <img src="views/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p><?php echo $username; ?></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -186,8 +186,8 @@
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="index.html"><i class="fa fa-home"></i> <span>Home</span></a></li>
-        <li class="active"><a href="mydetails.html"><i class="fa fa-user"></i> <span>My Details</span></a></li>
+        <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Home</span></a></li>
+        <li><a href="mydetails.html"><i class="fa fa-user"></i> <span>My Details</span></a></li>
         <li><a href="mytraining.html"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
         <li><a href="#"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
       </ul><!-- /.sidebar-menu -->
