@@ -249,5 +249,20 @@
   });
 </script>
 
+<script>
+  $(function() {
+    url = window.location.href;
+    path = url.split('/');
+    path = path[path.length-1];
+    if (path === '') {
+      $('#mainpage').addClass('active');
+    } else if (path === 'profile') {
+      $('#profile').addClass('active');
+    } else if (path === 'training') {
+      $('#training').addClass('active');
+    }
+  });
+</script>
+
 </body>
 </html>

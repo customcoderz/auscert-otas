@@ -186,10 +186,10 @@
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Home</span></a></li>
-        <li><a href="mydetails.html"><i class="fa fa-user"></i> <span>My Details</span></a></li>
-        <li><a href="mytraining.html"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
+        <li id="mainpage"><a href="/"><i class="fa fa-home"></i> <span>Home</span></a></li>
+        <li id="profile"><a href="/profile"><i class="fa fa-user"></i> <span>My Details</span></a></li>
+        <li id="training"><a href="/training"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
+        <li id="helpcenter"><a href="#"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
       </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

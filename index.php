@@ -3,9 +3,9 @@
 // kickstart the framework
 $f3 = require('lib/base.php');
 
-// some constants to tell the framework where the header/footer files are
-define('HEADER_PATH', 'views/includes/header.htm');
-define('FOOTER_PATH', 'views/includes/footer.htm');
+// tell the framework where the header and footer files are
+$f3->set('header', 'views/includes/header.htm');
+$f3->set('footer', 'views/includes/footer.htm');
 
 // tell the framework we're working on this database
 $f3->set('DB', new DB\SQL('mysql:host=127.0.0.1;dbname=auscertdb', 'root', ''));
@@ -28,20 +28,23 @@ $f3->set('isAuthenticated', function() {
  * -> otherwise go to login page
  */
 $f3->route('GET /', function($f3) {
-  // !!TODO!!
 
   // if the user has not logged in
   if (!$f3->exists('SESSION.email')) {
+    // go to login page
     $f3->reroute('/login');
   } else {
+    // retrieve user mapper
     $user = $f3->get('user');
-    $user = $user->find("email = '" . $f3->get('SESSION.email') . "'");
-    $f3->set('username', "{$user[0]->first_name} {$user[0]->last_name}");
 
+    // get currently active user data
+    $user = $user->find("email = '" . $f3->get('SESSION.email') . "'")[0];
+    $f3->set('username', "{$user->first_name} {$user->last_name}");
+
+    // set the class of '<body>' tag
     $f3->set('bodyclass', 'skin-purple');
-    $f3->set('header', HEADER_PATH);
-    $f3->set('footer', FOOTER_PATH);
 
+    // render the template
     echo Template::instance()->render('views/index.htm');
   }
 });
@@ -56,10 +59,6 @@ $f3->route('GET /login', function($f3) {
     $f3->reroute('/');
     return;
   }
-
-  // header & footer files
-  $f3->set('header', HEADER_PATH);
-  $f3->set('footer', FOOTER_PATH);
 
   // set the class of '<body>' tag
   $f3->set('bodyclass', 'login-page');
@@ -90,6 +89,10 @@ $f3->route('POST /login', function($f3) {
     $f3->set('SESSION.email', $f3->get('POST.user-email'));
     $f3->set('authenticated', TRUE);
 
+    // get currently active user data
+    $user = $user->find("email = '" . $f3->get('SESSION.email') . "'")[0];
+    $f3->set('username', "{$user->first_name} {$user->last_name}");
+
     // display main page
     $f3->reroute('/');
   } else {
@@ -116,6 +119,49 @@ $f3->route('GET /logout', function($f3) {
 
   // redirect
   $f3->reroute('/');
+});
+
+$f3->route('GET /profile', function($f3) {
+
+  // if the user has not logged in
+  if (!$f3->exists('SESSION.email')) {
+    // go to login page
+    $f3->reroute('/login');
+  } else {
+    // retrieve user mapper
+    $user = $f3->get('user');
+
+    // get currently active user data
+    $user = $user->find("email = '" . $f3->get('SESSION.email') . "'")[0];
+    $f3->set('username', "{$user->first_name} {$user->last_name}");
+
+    // set the class of '<body>' tag
+    $f3->set('bodyclass', 'skin-purple');
+
+    // render the template
+    echo Template::instance()->render('views/mydetails.htm');
+  }
+});
+
+$f3->route('GET /training', function($f3) {
+  // if the user has not logged in
+  if (!$f3->exists('SESSION.email')) {
+    // go to login page
+    $f3->reroute('/login');
+  } else {
+    // retrieve user mapper
+    $user = $f3->get('user');
+
+    // get currently active user data
+    $user = $user->find("email = '" . $f3->get('SESSION.email') . "'")[0];
+    $f3->set('username', "{$user->first_name} {$user->last_name}");
+
+    // set the class of '<body>' tag
+    $f3->set('bodyclass', 'skin-purple');
+
+    // render the template
+    echo Template::instance()->render('views/mytraining.htm');
+  }
 });
 
 // run the application

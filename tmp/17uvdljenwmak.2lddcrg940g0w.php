@@ -7,7 +7,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          AusCert Training
+          AusCERT Training
           <small>University of Queensland</small>
         </h1>
         <ol class="breadcrumb">
