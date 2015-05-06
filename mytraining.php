@@ -1,13 +1,5 @@
 <?php
 	session_start();
-	
-	/* Check for login */
-	if(!isset($_SESSION['username'])) {
-		header("Location: login.php");
-	} else {
-		$user = $_SESSION['username'];
-	}
-	
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +32,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
           <img src="dist/img/logo.png" alt="logo">
 
         </a>
@@ -151,14 +143,14 @@
                   <!-- The user image in the navbar-->
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs"><?php echo $user ?></span>
+                  <span class="hidden-xs"><?php echo $_SESSION['username'] ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      <?php echo $user ?> - Web Developer
+                      <?php echo $_SESSION['username'] ?> - Web Developer
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
@@ -201,7 +193,7 @@
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p><?php echo $user ?></p>
+              <p><?php echo $_SESSION['username'] ?></p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -222,9 +214,9 @@
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="index.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
+            <li><a href="index.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
             <li><a href="mydetails.php"><i class="fa fa-user"></i> <span>My Details</span></a></li>
-            <li><a href="mytraining.php"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
+            <li class="active"><a href="mytraining.php"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
             <li><a href="#"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
           </ul><!-- /.sidebar-menu -->
         </section>
@@ -240,7 +232,7 @@
             <small>University of Queensland</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-graduation-cap"></i> My Training</li>
           <!--   <li class="active">Here</li> -->
           </ol>
         </section>
@@ -250,95 +242,11 @@
           
           <!-- Your Page Content Here -->
           <div class="row">
-             <div class="col-md-4">
-              <div class="box box-primary">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">
-                      Overview
-                    </h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>  
-                    </div>
-                  </div>
-                  <div class="box-body text-center">
-                     <input type="text" class="knob" value="30" data-width="150" data-height="150" data-fgColor="#3c8dbc"/>                     
-                      <div class="knob-label">Progress</div>
-                  </div>
-                </div>
-               
-             </div>
-             <div class="col-md-8">
-                <!-- Chat box -->
-              <div class="box box-success">
-                <div class="box-header">
-                  <h3 class="box-title">Messages</h3>
-                  <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
-                    <div class="btn-group" data-toggle="btn-toggle" >
-                      <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>
-                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <div class="box-body chat" id="chat-box">
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user4-128x128.jpg" alt="user image" class="online"/>
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-                        Mike Doe
-                      </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                    <div class="attachment">
-                      <h4>Attachments:</h4>
-                      <p class="filename">
-                        Theme-thumbnail-image.jpg
-                      </p>
-                      <div class="pull-right">
-                        <button class="btn btn-primary btn-sm btn-flat">Open</button>
-                      </div>
-                    </div><!-- /.attachment -->
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline"/>
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
-                        Alexander Pierce
-                      </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-                </div><!-- /.chat -->
-                <div class="box-footer">
-                  <div class="input-group">
-                    <input class="form-control" placeholder="Type message..."/>
-                    <div class="input-group-btn">
-                      <button class="btn btn-success">Send</button>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.box (chat box) -->
-
-
-             </div>
-          
-          </div>
-          <div class="row">
             <div class="col-md-12">
                   <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Training</h3>
-                  <div class="box-tools pull-right">
+                    <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                   </div>
@@ -350,7 +258,7 @@
                         <img src="dist/img/default-50x50.gif" alt="Product Image"/>
                       </div>
                         <div class="product-info">
-                          <a href="javascript::;" class="product-title">Task 1 <span class="label label-success pull-right">%60</span></a>
+                          <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 1 <span class="label label-success pull-right">%60</span></a>
                           <div class="progress-group">
                                 <div class="progress sm">
                                   <div class="progress-bar progress-bar-green" style="width: 50%"></div>
@@ -363,7 +271,7 @@
                         <img src="dist/img/default-50x50.gif" alt="Product Image"/>
                       </div>
                         <div class="product-info">
-                          <a href="javascript::;" class="product-title">Task 2<span class="label label-info pull-right">%70</span></a>
+                          <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 2<span class="label label-info pull-right" >%70</span></a>
                           <div class="progress-group">
                                 <div class="progress sm">
                                   <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
@@ -376,7 +284,33 @@
                         <img src="dist/img/default-50x50.gif" alt="Product Image"/>
                       </div>
                         <div class="product-info">
-                          <a href="javascript::;" class="product-title">Task 3 <span class="label label-danger pull-right">%30</span></a>
+                          <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 3 <span class="label label-danger pull-right">%30</span></a>
+                          <div class="progress-group">
+                                <div class="progress sm">
+                                  <div class="progress-bar progress-bar-red" style="width: 30%"></div>
+                                </div>
+                          </div>
+                        </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                      </div>
+                        <div class="product-info">
+                          <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 4<span class="label label-info pull-right">%70</span></a>
+                          <div class="progress-group">
+                                <div class="progress sm">
+                                  <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                </div>
+                          </div>
+                        </div>
+                    </li><!-- /.item -->
+                     <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                      </div>
+                        <div class="product-info">
+                          <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 5<span class="label label-danger pull-right">%30</span></a>
                           <div class="progress-group">
                                 <div class="progress sm">
                                   <div class="progress-bar progress-bar-red" style="width: 30%"></div>
@@ -386,9 +320,9 @@
                     </li><!-- /.item -->
                   </ul>
                 </div><!-- /.box-body -->
-                <div class="box-footer text-center">
+               <!--  <div class="box-footer text-center">
                   <a href="javascript::;" class="uppercase">View All Trainings</a>
-                </div><!-- /.box-footer -->
+                </div> --><!-- /.box-footer -->
               </div><!-- /.box -->
 
             </div>
@@ -396,15 +330,50 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
+      
+
       <!-- Main Footer -->
       <footer class="main-footer">
-     
-              <!-- Default to the left --> 
+      
+        <!-- Default to the left --> 
         <strong>Copyright &copy; 2015 <a href="#">CustomCoderz</a>.</strong> All rights reserved.
       </footer>
 
     </div><!-- ./wrapper -->
 
+    <!-- modal -->
+    <div class="modal fade" id="training-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Task 1</h4>
+            </div>
+            <div class="modal-body">
+                      
+          <p>
+            This is a welcome message to some one that just signed up to your
+            service, you can show some features of your dashboard or links to configuration.
+          </p>
+
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Start Training</button>
+              </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+    <!-- REQUIRED JS SCRIPTS -->
     
     <!-- jQuery 2.1.3 -->
     <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>

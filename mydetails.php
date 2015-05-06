@@ -1,13 +1,5 @@
 <?php
 	session_start();
-	
-	/* Check for login */
-	if(!isset($_SESSION['username'])) {
-		header("Location: login.php");
-	} else {
-		$user = $_SESSION['username'];
-	}
-	
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +32,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
           <img src="dist/img/logo.png" alt="logo">
 
         </a>
@@ -151,14 +143,14 @@
                   <!-- The user image in the navbar-->
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs"><?php echo $user ?></span>
+                  <span class="hidden-xs"><?php echo $_SESSION['username'] ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      <?php echo $user ?> - Web Developer
+                      <?php echo $_SESSION['username'] ?> - Web Developer
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
@@ -201,7 +193,7 @@
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p><?php echo $user ?></p>
+              <p><?php echo $_SESSION['username'] ?></p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -222,8 +214,8 @@
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="index.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
-            <li><a href="mydetails.php"><i class="fa fa-user"></i> <span>My Details</span></a></li>
+            <li><a href="index.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
+            <li class="active"><a href="mydetails.php"><i class="fa fa-user"></i> <span>My Details</span></a></li>
             <li><a href="mytraining.php"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
             <li><a href="#"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
           </ul><!-- /.sidebar-menu -->
@@ -240,7 +232,7 @@
             <small>University of Queensland</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> My Details</li>
           <!--   <li class="active">Here</li> -->
           </ol>
         </section>
@@ -248,150 +240,173 @@
         <!-- Main content -->
         <section class="content">
           
+          
           <!-- Your Page Content Here -->
           <div class="row">
-             <div class="col-md-4">
+            <div class="col-md-5">
               <div class="box box-primary">
                   <div class="box-header with-border">
                     <h3 class="box-title">
-                      Overview
+                        Profile Detail
                     </h3>
-                    <div class="box-tools pull-right">
+                   <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>  
+                    </div> 
+                  </div>
+                  <div class="box-body">
+              
+                      <img src="dist/img/photo1.png" class="img-responsive no-padding" alt="">
+                       <div class="text-center">
+                       <h4><strong>John Mayer</strong></h4> 
+                       <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                         
+                       </div>
+               
+                       <dl class="dl-horizontal">
+                          <dt>Description lists</dt>
+                          <dd>A description list is perfect for defining terms.</dd>
+                          <dt>Euismod</dt>
+                          <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                          <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                          <dt>Malesuada porta</dt>
+                          <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                      </dl>
+
+                  </div>
+
+
+              </div>
+              
+            </div>
+            <div class="col-md-7">
+              <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Activities</h3>
+                  <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse">
                             <i class="fa fa-minus"></i>
                         </button>  
                     </div>
-                  </div>
-                  <div class="box-body text-center">
-                     <input type="text" class="knob" value="30" data-width="150" data-height="150" data-fgColor="#3c8dbc"/>                     
-                      <div class="knob-label">Progress</div>
-                  </div>
                 </div>
-               
-             </div>
-             <div class="col-md-8">
-                <!-- Chat box -->
-              <div class="box box-success">
-                <div class="box-header">
-                  <h3 class="box-title">Messages</h3>
-                  <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
-                    <div class="btn-group" data-toggle="btn-toggle" >
-                      <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>
-                      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <div class="box-body chat" id="chat-box">
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user4-128x128.jpg" alt="user image" class="online"/>
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-                        Mike Doe
-                      </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                    <div class="attachment">
-                      <h4>Attachments:</h4>
-                      <p class="filename">
-                        Theme-thumbnail-image.jpg
-                      </p>
-                      <div class="pull-right">
-                        <button class="btn btn-primary btn-sm btn-flat">Open</button>
-                      </div>
-                    </div><!-- /.attachment -->
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-                  <div class="item">
-                    <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline"/>
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
-                        Alexander Pierce
-                      </a>
-                      I would like to meet you to discuss the latest news about
-                      the arrival of the new theme. They say it is going to be one the
-                      best themes on the market
-                    </p>
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-                </div><!-- /.chat -->
-                <div class="box-footer">
-                  <div class="input-group">
-                    <input class="form-control" placeholder="Type message..."/>
-                    <div class="input-group-btn">
-                      <button class="btn btn-success">Send</button>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.box (chat box) -->
-
-
-             </div>
-          
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-                  <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Training</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div><!-- /.box-header -->
+                <div class="box-content">
                 <div class="box-body">
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
                       </div>
-                        <div class="product-info">
-                          <a href="javascript::;" class="product-title">Task 1 <span class="label label-success pull-right">%60</span></a>
-                          <div class="progress-group">
-                                <div class="progress sm">
-                                  <div class="progress-bar progress-bar-green" style="width: 50%"></div>
-                                </div>
-                          </div>
-                        </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
                       </div>
-                        <div class="product-info">
-                          <a href="javascript::;" class="product-title">Task 2<span class="label label-info pull-right">%70</span></a>
-                          <div class="progress-group">
-                                <div class="progress sm">
-                                  <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                                </div>
-                          </div>
-                        </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
                     </li><!-- /.item -->
-                     <li class="item">
+                    <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
                       </div>
-                        <div class="product-info">
-                          <a href="javascript::;" class="product-title">Task 3 <span class="label label-danger pull-right">%30</span></a>
-                          <div class="progress-group">
-                                <div class="progress sm">
-                                  <div class="progress-bar progress-bar-red" style="width: 30%"></div>
-                                </div>
-                          </div>
-                        </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
                     </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="http://placehold.it/50x50/d2d6de/ffffff" alt="Product Image"/>
+                      </div>
+                      <div class="product-info">
+                        <a href="javascript::;" class="product-title">
+                        <strong>Task 1</strong>
+                         <small class="pull-right">5m ago</small></a>
+                        <span class="product-description">
+                          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    
                   </ul>
                 </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="javascript::;" class="uppercase">View All Trainings</a>
-                </div><!-- /.box-footer -->
-              </div><!-- /.box -->
+                  
+                </div>
 
+              </div>
+              
             </div>
+
           </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -405,6 +420,7 @@
 
     </div><!-- ./wrapper -->
 
+    <!-- REQUIRED JS SCRIPTS -->
     
     <!-- jQuery 2.1.3 -->
     <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
