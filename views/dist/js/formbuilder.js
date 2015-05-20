@@ -574,6 +574,7 @@
       mappings: {
         SIZE: 'field_options.size',
         UNITS: 'field_options.units',
+        YOUTUBE: 'field_options.youtube',
         LABEL: 'label',
         FIELD_TYPE: 'field_type',
         REQUIRED: 'required',
@@ -728,11 +729,23 @@
   Formbuilder.registerField('number', {
     order: 30,
     view: "<input type='text' />\n<% if (units = rf.get(Formbuilder.options.mappings.UNITS)) { %>\n  <%= units %>\n<% } %>",
-    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>\n<%= Formbuilder.templates['edit/integer_only']() %>",
+    edit: "<%= Formbuilder.templates['edit/min_max']() %>\n<%= Formbuilder.templates['edit/units']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> Number"
   });
 
 }).call(this);
+
+
+(function() {
+  Formbuilder.registerField('Youtube', {
+    order: 30,
+    view: "<div class=\"embed-responsive embed-responsive-16by9\" id=\"videoDiv\" style=\"display:none\"> \n <embed class=\"embed-responsive-item\" allowfullscreen=\"true\" src=\"http://www.youtube.com/v/\" type=\"application/x-shockwave-flash\"> \n </div>",
+    edit: "<%= Formbuilder.templates['edit/youtube']() %>",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> Youtube"
+  });
+
+}).call(this);
+
 
 (function() {
   Formbuilder.registerField('paragraph', {
@@ -754,6 +767,16 @@
     view: "<div class='input-line'>\n  <span class='above-line'>$</span>\n  <span class='dolars'>\n    <input type='text' />\n    <label>Dollars</label>\n  </span>\n  <span class='above-line'>.</span>\n  <span class='cents'>\n    <input type='text' />\n    <label>Cents</label>\n  </span>\n</div>",
     edit: "",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-usd\"></span></span> Price"
+  });
+
+}).call(this);
+
+(function() {
+  Formbuilder.registerField('pricew', {
+    order: 45,
+    view: "    <label>Dollars</label>\n  </span>\n  <span class='above-line'>.</span>\n  <span class='cents'>\n    <input type='text' />\n    <label>Cents</label>\n  </span>\n</div>",
+    edit: "",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-usd\"></span></span> Pricew"
   });
 
 }).call(this);
@@ -1005,6 +1028,18 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Units</div>\n<input type="text" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.UNITS )) == null ? '' : __t) +
+'" />\n';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["edit/youtube"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-edit-section-header\'>Youtube</div>\n <p> Please input VQH8ZTgna3Q (YouTube video id) OR 120562699 (Vimeo video id)</p> \n<input type="text" id="video" name="video" onkeyup="videoChange()" onChange="videoChange()" data-rv-input="model.' +
+((__t = ( Formbuilder.options.mappings.YOUTUBE )) == null ? '' : __t) +
 '" />\n';
 
 }
