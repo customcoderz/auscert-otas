@@ -575,6 +575,7 @@
         SIZE: 'field_options.size',
         UNITS: 'field_options.units',
         YOUTUBE: 'field_options.youtube',
+        URL: 'field_options.url',
         LABEL: 'label',
         FIELD_TYPE: 'field_type',
         REQUIRED: 'required',
@@ -742,6 +743,16 @@
     view: "<div class=\"embed-responsive embed-responsive-16by9\" id=\"videoDiv\" style=\"display:none\"> \n <embed class=\"embed-responsive-item\" allowfullscreen=\"true\" src=\"http://www.youtube.com/v/\" type=\"application/x-shockwave-flash\"> \n </div>",
     edit: "<%= Formbuilder.templates['edit/youtube']() %>",
     addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> Youtube"
+  });
+
+}).call(this);
+
+(function() {
+  Formbuilder.registerField('URL', {
+    order: 30,
+    view: "<div class=\"embed-responsive embed-responsive-16by9\" id=\"urlDiv\" style=\"display:none\"> \n <iframe class=\"embed-responsive-item\" allowfullscreen=\"true\" src=\"\" type=\"application/x-shockwave-flash\"> \n </iframe>",
+    edit: "<%= Formbuilder.templates['edit/url']() %>",
+    addButton: "<span class=\"symbol\"><span class=\"fa fa-number\">123</span></span> URL"
   });
 
 }).call(this);
@@ -1040,6 +1051,18 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Youtube</div>\n <p> Please input VQH8ZTgna3Q (YouTube video id) OR 120562699 (Vimeo video id)</p> \n<input type="text" id="video" name="video" onkeyup="videoChange()" onChange="videoChange()" data-rv-input="model.' +
 ((__t = ( Formbuilder.options.mappings.YOUTUBE )) == null ? '' : __t) +
+'" />\n';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["edit/url"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-edit-section-header\'>URL</div>\n <p> Please input URL</p> \n<input type="text" id="url" name="url" onkeyup="urlChange()" onChange="urlChange()" data-rv-input="model.' +
+((__t = ( Formbuilder.options.mappings.URL )) == null ? '' : __t) +
 '" />\n';
 
 }

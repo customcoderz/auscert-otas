@@ -569,6 +569,20 @@
         }
     }
 
+     function urlChange() {
+        var url = $("#url").val();
+
+        if (url.length > 0 ) {
+            $("#urlDiv").html("<iframe src="+ url +"><p>Your browser does not support iframes.</p></iframe>");
+            $("#urlDiv").show();
+            $("#urlBr").show();
+        } else {
+            $("#urlEmbed").remove();
+            $("#urlDiv").hide();
+            $("#urlBr").hide();
+        }
+    }
+
   </script>
     
 
