@@ -315,7 +315,7 @@
                         </div>
                     </li><!-- /.item -->
                   </ul>
-                  <button class="btn btn-primary btn-sm btn-flat" href="create-new.html">Add Training</button>
+                  <a class="btn btn-primary btn-sm btn-flat" href="create-new.html">Add Training</a>
                 </div><!-- /.box-body -->
                <!--  <div class="box-footer text-center">
                   <a href="javascript::;" class="uppercase">View All Trainings</a>
@@ -356,7 +356,7 @@
             </div>
             <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <a href="phishingtraining.html" class="btn btn-primary">Start Training</a>
+                <a href="phishingtraining.php" class="btn btn-primary">Start Training</a>
               </div>
         </div>
       </div>

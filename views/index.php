@@ -211,8 +211,8 @@
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="index.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
-            <li><a href="mydetails.html"><i class="fa fa-user"></i> <span>My Details</span></a></li>
-            <li><a href="mytraining.html"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
+            <li><a href="mydetails.php"><i class="fa fa-user"></i> <span>My Details</span></a></li>
+            <li><a href="mytraining.php"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
             <li><a href="help.php"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
           </ul><!-- /.sidebar-menu -->
         </section>
