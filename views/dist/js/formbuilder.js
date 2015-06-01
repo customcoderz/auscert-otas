@@ -783,7 +783,7 @@
 }).call(this);
 
 (function() {
-  Formbuilder.registerField('pricew', {
+  Formbuilder.registerField('price-test', {
     order: 45,
     view: "    <label>Dollars</label>\n  </span>\n  <span class='above-line'>.</span>\n  <span class='cents'>\n    <input type='text' />\n    <label>Cents</label>\n  </span>\n</div>",
     edit: "",
