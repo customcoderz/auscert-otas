@@ -251,7 +251,7 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="dist/img/training-icon-1.png" alt="Product Image"/>
                       </div>
                         <div class="product-info">
                           <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 1 <span class="label label-success pull-right">%60</span></a>
@@ -264,7 +264,7 @@
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="dist/img/training-icon-1.png" alt="Product Image"/>
                       </div>
                         <div class="product-info">
                           <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 2<span class="label label-info pull-right" >%70</span></a>
@@ -277,7 +277,7 @@
                     </li><!-- /.item -->
                      <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="dist/img/training-icon-1.png" alt="Product Image"/>
                       </div>
                         <div class="product-info">
                           <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 3 <span class="label label-danger pull-right">%30</span></a>
@@ -290,7 +290,7 @@
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="dist/img/training-icon-1.png" alt="Product Image"/>
                       </div>
                         <div class="product-info">
                           <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 4<span class="label label-info pull-right">%70</span></a>
@@ -303,7 +303,7 @@
                     </li><!-- /.item -->
                      <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif" alt="Product Image"/>
+                        <img src="dist/img/training-icon-1.png" alt="Product Image"/>
                       </div>
                         <div class="product-info">
                           <a href="javascript::;" class="product-title" data-toggle="modal" data-target="#training-modal">Task 5<span class="label label-danger pull-right">%30</span></a>
@@ -315,7 +315,6 @@
                         </div>
                     </li><!-- /.item -->
                   </ul>
-                  <a class="btn btn-primary btn-sm btn-flat" href="create-new.html">Add Training</a>
                 </div><!-- /.box-body -->
                <!--  <div class="box-footer text-center">
                   <a href="javascript::;" class="uppercase">View All Trainings</a>
