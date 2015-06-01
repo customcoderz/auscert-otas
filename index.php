@@ -1,5 +1,4 @@
 <?php
-
 // kickstart the framework
 $f3 = require('lib/base.php');
 
@@ -27,7 +26,7 @@ $f3->set('isAuthenticated', function() {
  * -> if authenticated go to main page
  * -> otherwise go to login page
  */
-$f3->route('GET /', function($f3) {
+$f3->route('GET /index.php', function($f3) {
 
   // if the user has not logged in
   if (!$f3->exists('SESSION.email')) {
@@ -45,7 +44,7 @@ $f3->route('GET /', function($f3) {
     $f3->set('bodyclass', 'skin-purple');
 
     // render the template
-    echo Template::instance()->render('views/index.htm');
+    echo Template::instance()->render('views/index.php');
   }
 });
 
@@ -64,7 +63,7 @@ $f3->route('GET /login', function($f3) {
   $f3->set('bodyclass', 'login-page');
 
   // render the template
-  echo Template::instance()->render('views/login.htm');
+  echo Template::instance()->render('views/login.php');
 
   // clear the flash message after use
   $f3->clear('SESSION.flash');
@@ -139,7 +138,7 @@ $f3->route('GET /profile', function($f3) {
     $f3->set('bodyclass', 'skin-purple');
 
     // render the template
-    echo Template::instance()->render('views/mydetails.htm');
+    echo Template::instance()->render('views/mydetails.php');
   }
 });
 
@@ -160,7 +159,7 @@ $f3->route('GET /training', function($f3) {
     $f3->set('bodyclass', 'skin-purple');
 
     // render the template
-    echo Template::instance()->render('views/mytraining.htm');
+    echo Template::instance()->render('views/mytraining.php');
   }
 });
 

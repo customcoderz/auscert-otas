@@ -61,7 +61,7 @@
                         <a href="#">
                           <div class="pull-left">
                             <!-- User Image -->
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                            <img src="dist/img/avatar04.png" class="img-circle" alt="User Image"/>
                           </div>
                           <!-- Message title and timestamp -->
                           <h4>                            
@@ -140,16 +140,16 @@
                 <!-- Menu Toggle Button -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- The user image in the navbar-->
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
+                  <img src="dist/img/avatar04.png" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs">Administrator</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    <img src="dist/img/avatar04.png" class="img-circle" alt="User Image" />
                     <p>
-                      Alexander Pierce - Web Developer
+                      Administrator - Network Security Officer
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
@@ -189,10 +189,10 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+              <img src="dist/img/avatar04.png" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p>Administrator</p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -210,14 +210,14 @@
           <!-- /.search form -->
 
           <!-- Sidebar Menu -->
-          <ul class="sidebar-menu">
-            <li class="header">MENU</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li><a href="index.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
-            <li><a href="mydetails.php"><i class="fa fa-user"></i> <span>My Details</span></a></li>
-            <li><a href="mytraining.php"><i class="fa fa-graduation-cap"></i> <span>My Training</span></a></li>
-            <li class="active"><a href="#"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
-          </ul><!-- /.sidebar-menu -->
+            <ul class="sidebar-menu">
+                <li class="header">MENU</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li><a href="admin.php"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                <li class="active"><a href="managetrainings.php"><i class="fa fa-graduation-cap"></i> <span>Manage Trainings</span></a></li>
+                <li><a href="reports.php"><i class="fa fa-user"></i> <span>Reports</span></a></li>
+                <li><a href="help.php"><i class="fa fa-book"></i> <span>Help Center</span></a></li>
+            </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
       </aside>
